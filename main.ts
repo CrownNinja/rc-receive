@@ -1,22 +1,41 @@
 radio.onReceivedNumber(function (receivedNumber) {
-    pins.digitalWritePin(DigitalPin.P8, 0)
-    pins.digitalWritePin(DigitalPin.P1, 0)
-    pins.analogWritePin(AnalogPin.P15, 1023)
-    pins.analogWritePin(AnalogPin.P16, 1023)
-    basic.pause(2000)
-    pins.digitalWritePin(DigitalPin.P16, 0)
-    pins.digitalWritePin(DigitalPin.P15, 0)
+    if (receivedNumber == 2) {
+        pins.digitalWritePin(DigitalPin.P8, 0)
+        pins.digitalWritePin(DigitalPin.P1, 0)
+        pins.analogWritePin(AnalogPin.P15, 700)
+        pins.analogWritePin(AnalogPin.P16, 700)
+        basic.pause(2000)
+        pins.digitalWritePin(DigitalPin.P16, 0)
+        pins.digitalWritePin(DigitalPin.P15, 0)
+    } else if (receivedNumber == 1) {
+        pins.digitalWritePin(DigitalPin.P8, 0)
+        pins.digitalWritePin(DigitalPin.P1, 0)
+        pins.analogWritePin(AnalogPin.P16, 560)
+        pins.analogWritePin(AnalogPin.P15, 560)
+        basic.pause(1000)
+        pins.analogWritePin(AnalogPin.P16, 1023)
+        pins.analogWritePin(AnalogPin.P15, 1023)
+        basic.pause(1000)
+        pins.digitalWritePin(DigitalPin.P16, 0)
+        pins.digitalWritePin(DigitalPin.P15, 0)
+    } else {
+    	
+    }
 })
 radio.onReceivedString(function (receivedString) {
     if (receivedString == "move") {
+        pins.digitalWritePin(DigitalPin.P8, 1)
         pins.digitalWritePin(DigitalPin.P1, 0)
         pins.analogWritePin(AnalogPin.P15, 560)
+        pins.analogWritePin(AnalogPin.P16, 560)
         basic.pause(2000)
         pins.digitalWritePin(DigitalPin.P16, 0)
         pins.digitalWritePin(DigitalPin.P15, 0)
     } else if (receivedString == "move two") {
         pins.digitalWritePin(DigitalPin.P8, 0)
+        pins.digitalWritePin(DigitalPin.P1, 1)
         pins.analogWritePin(AnalogPin.P16, 560)
+        pins.analogWritePin(AnalogPin.P15, 560)
         basic.pause(2000)
         pins.digitalWritePin(DigitalPin.P16, 0)
         pins.digitalWritePin(DigitalPin.P15, 0)
@@ -25,9 +44,12 @@ radio.onReceivedString(function (receivedString) {
     }
 })
 radio.onReceivedValue(function (name, value) {
-    pins.digitalWritePin(DigitalPin.P15, 0)
+    pins.digitalWritePin(DigitalPin.P8, 1)
+    pins.digitalWritePin(DigitalPin.P1, 1)
+    pins.analogWritePin(AnalogPin.P15, 500)
+    pins.analogWritePin(AnalogPin.P16, 500)
+    basic.pause(2000)
     pins.digitalWritePin(DigitalPin.P16, 0)
-    pins.analogWritePin(AnalogPin.P16, 0)
-    pins.analogWritePin(AnalogPin.P15, 0)
+    pins.digitalWritePin(DigitalPin.P15, 0)
 })
 radio.setGroup(1)
